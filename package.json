@@ -1,0 +1,26 @@
+{
+  "name": "elm-validation",
+  "version": "1.0.0",
+  "description": "Applicative validation in elm",
+  "main": "index.js",
+  "scripts": {
+    "elm-format": "elm-format",
+    "elm-make": "elm-make",
+    "elm-package": "elm-package"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joneshf/elm-validation.git"
+  },
+  "keywords": [],
+  "author": "Hardy Jones <jones3.hardy@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joneshf/elm-validation/issues"
+  },
+  "homepage": "https://github.com/joneshf/elm-validation#readme",
+  "devDependencies": {
+    "elm": "0.18.0",
+    "elm-format": "0.7.0-exp"
+  }
+}
