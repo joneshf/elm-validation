@@ -1,13 +1,15 @@
 module Validation
     exposing
-        ( map2
+        ( append
+        , appendNonempty
         )
 
 {-|
 
 ## Useful functions
 
-@docs map2
+@docs append
+@docs appendNonempty
 
 ## Example
 
@@ -91,11 +93,36 @@ With `Result a b`, we'd only get the first `a` if any exist.
 
 Both have their uses, neither is better than the other.
 -}
-map2 : (a -> b -> c) -> Result (Nonempty d) a -> Result (Nonempty d) b -> Result (Nonempty d) c
-map2 f x y =
+appendNonempty :
+    (a -> b -> c)
+    -> Result (Nonempty d) a
+    -> Result (Nonempty d) b
+    -> Result (Nonempty d) c
+appendNonempty f x y =
     case ( x, y ) of
         ( Err xs, Err ys ) ->
             Err (List.Nonempty.append xs ys)
+
+        ( Err xs, _ ) ->
+            Err xs
+
+        ( _, Err ys ) ->
+            Err ys
+
+        ( Ok a, Ok b ) ->
+            Ok (f a b)
+
+
+{-| -}
+append :
+    (a -> b -> c)
+    -> Result appendable a
+    -> Result appendable b
+    -> Result appendable c
+append f x y =
+    case ( x, y ) of
+        ( Err xs, Err ys ) ->
+            Err (xs ++ ys)
 
         ( Err xs, _ ) ->
             Err xs
