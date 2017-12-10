@@ -113,7 +113,19 @@ appendNonempty f x y =
             Ok (f a b)
 
 
-{-| -}
+{-| Accumulate validations in an `appendable`.
+
+This function allows you to work with the wonderful [elm-verify][].
+
+[elm-verify][] provides combinators for creating validations
+and a number of functions that work well in pipeline style.
+
+If you've built up a validation using [elm-verify][],
+you can append them together using this function.
+
+[elm-verify]: http://package.elm-lang.org/packages/stoeffel/elm-verify/latest
+
+-}
 append :
     (a -> b -> c)
     -> Result appendable a
